@@ -5,6 +5,7 @@
 FROM balenalib/raspberrypi3-debian:latest
 
 ENV container docker
+ENV INITSYSTEM on
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         dbus \
@@ -63,5 +64,5 @@ COPY env-setup.sh /home/env-setup.sh
 RUN chmod +x /home/env-setup.sh
 COPY password-generator.php /home/password-generator.php
 
-CMD [ "/bin/bash", "-c", "/home/env-setup.sh && /home/firewall-rules.sh && /lib/systemd/systemd" ]
+CMD [ "usr/bin/entry.sh" ]
 

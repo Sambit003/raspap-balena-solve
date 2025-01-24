@@ -12,5 +12,5 @@ sleep infinity &
 for var in $(compgen -e); do
 	printf '%q=%q\n' "$var" "${!var}"
 done > /etc/docker.env
-exec /lib/systemd/systemd
+exec /sbin/init
 
